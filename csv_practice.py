@@ -1,3 +1,18 @@
+# REFLECTION
+#
+# Q1: ETL pipeline in Python vs. Excel
+# In Excel I would open the file, pick the rows and save a new sheet by hand
+# which is quick for a one time job. Python lets me save those steps as a script
+# that I can rerun on new data while handling large files. I can also automate the whole
+# process. Excel is easier for charts and formulas
+# I can tweak the work without writing the code.
+#
+# Q2: Append-mode log file
+# A business could log every order or payment its system processes like for example Amazon. 
+# The business could use a timestamp on each line as an audit. Append mode is the right tool
+# because each new entry gets added to the end without getting rid of any history
+# so past records stay there and nothing is lost between runs.
+
 import csv
 from datetime import datetime
 
