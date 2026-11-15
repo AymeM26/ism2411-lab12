@@ -57,3 +57,15 @@ with open(SALES_FILE, "r", newline="") as infile, \
             writer.writerow([row[0], price, quantity, f"{total:.2f}"])
             rows_written += 1
             print(f"wrote {rows_written} of {rows_read} rows to {CLEANED_FILE}")
+
+print("---Exercise 6---")
+dict_total = 0
+print("DictReader")
+with open (SALES_FILE, "r", newline="") as f:
+    reader = csv. DictReader(f)
+    for row in reader:
+        price = float(row["price"])
+        quantity = int(row["quantity"])
+        dict_total += price * quantity
+print(f"DictReader total: ${dict_total:.2f}")
+print("Matches Exercise 4:", round(dict_total, 2) == round(total_revenue, 2))
