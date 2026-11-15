@@ -69,3 +69,16 @@ with open (SALES_FILE, "r", newline="") as f:
         dict_total += price * quantity
 print(f"DictReader total: ${dict_total:.2f}")
 print("Matches Exercise 4:", round(dict_total, 2) == round(total_revenue, 2))
+
+print("---Exercise 7---")
+summary = {}
+
+with open(SALES_FILE, "r") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        product = row ["product"]
+        total = float(row["price"]) * int(row["quantity"])
+        summary[product] = summary.get(product, 0) + total
+
+for product in sorted(summary):
+    print(f"{product}: ${summary[product]:.2f}")
