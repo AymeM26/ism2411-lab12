@@ -32,10 +32,9 @@ with open(SALES_FILE, "r") as f:
     next (reader)
     for row in reader:
         product, price_str, qty_str = row 
-        price = float(row [1])
-        quantity = int(row [2])
+        price = float(price_str)
+        quantity = int(qty_str)
         total = price * quantity
         total_revenue += total
-        print(f"{row[0]}: {quantity} units x ${price:.2f} = ${total:.2f}")
+        print(f"{product}: {quantity} units x ${price:.2f} = ${total:.2f}")
 print(f"Total revenue: ${total_revenue:.2f}")
-
