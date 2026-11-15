@@ -27,14 +27,14 @@ with open(SALES_FILE, "r") as f:
 print("---Exercise 4---")
 
 total_revenue = 0
-with open(SALES_FILE, "r") as f:
+with open(SALES_FILE, "r", newline="") as f:
     reader = csv.reader(f)
     next (reader)
     for row in reader:
-        product, price_str, qty_str = row 
-        price = float(price_str)
-        quantity = int(qty_str)
-        total = price * quantity
-        total_revenue += total
-        print(f"{product}: {quantity} units x ${price:.2f} = ${total:.2f}")
+        product = row [0]
+        price = float(row[1])
+        quantity = int(row[2])
+        line_total = price * quantity
+        total_revenue += line_total
+        print(f"{product}: {quantity} units x ${price:.2f} = ${line_total}")
 print(f"Total revenue: ${total_revenue:.2f}")
