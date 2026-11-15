@@ -38,3 +38,22 @@ with open(SALES_FILE, "r", newline="") as f:
         total_revenue += line_total
         print(f"{product}: {quantity} units x ${price:.2f} = ${line_total}")
 print(f"Total revenue: ${total_revenue:.2f}")
+
+print("---Exercise 5---")
+rows_read = 0
+rows_written = 0
+with open(SALES_FILE, "r", newline="") as infile, \
+    open(CLEANED_FILE, "w", newline="") as outfile:
+    reader = csv.reader(infile)
+    writer = csv.writer(outfile)
+    next(reader)
+    writer.writerow(["Product", "Price", "Qty", "Total"])
+    for row in reader:
+        rows_read += 1
+        price = float(row[1])
+        quantity = int(row[2])
+        total = price * quantity
+        if total > 100:
+            writer.writerow([row[0], price, quantity, f"{total:.2f}"])
+            rows_written += 1
+            print(f"wrote {rows_written} of {rows_read} rows to {CLEANED_FILE}")
